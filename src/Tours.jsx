@@ -8,9 +8,9 @@ const Tours = ({ tours }) => {
         <div className="underline"></div>
       </div>
       <div>
-        {tours.map((tour) => {
-          return <Tour key={tour.id} {...tour}></Tour>;
-        })}
+        {tours.map((tour) => (
+          <Tour key={tour.id} {...tour} />
+        ))}
       </div>
     </section>
   );
