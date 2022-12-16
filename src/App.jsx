@@ -22,6 +22,11 @@ function App() {
     }
   };
 
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id !== id);
+    setTours(newTours);
+  };
+
   useEffect(() => {
     fetchToursData();
   }, []);
@@ -32,10 +37,19 @@ function App() {
         <Loading />
       </main>
     );
+  } else if (tours.length === 0) {
+    return (
+      <main>
+        <h1>No Tours in the List.</h1>
+        <button onClick={fetchToursData} className="btn">
+          Refresh
+        </button>
+      </main>
+    );
   } else {
     return (
       <main>
-        <Tours tours={tours} />
+        <Tours tours={tours} removeTour={removeTour} />
       </main>
     );
   }
